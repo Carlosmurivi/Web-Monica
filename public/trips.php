@@ -12,7 +12,7 @@ if (!ControllerUsers::checkLoggedInUser()) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
+    <title>Viajes</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
@@ -22,6 +22,10 @@ if (!ControllerUsers::checkLoggedInUser()) {
 </head>
 <body>
     <?php include("../src/views/menu.php"); ?>
-    <a href="logOut.php">Logout</a>
+
+    <h1 class="titulo">NUESTROS VIAJES</h1>
+
+    <p class="texto">"Todos estos lugares tendrán por siempre un trocito nuestro"</p>
+
 </body>
 </html>

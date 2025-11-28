@@ -27,6 +27,43 @@ html {
     background-color: #fd5214;
 }
 
+.enlace-menu {
+    text-decoration: none;
+    color: white;
+    font-size: 200%;
+    padding: 5px 20px;
+    margin: auto 0;
+}
+
+.enlace-menu:hover {
+    color: #004E92;
+    background-color: #A7D8F0;
+}
+
+.titulo {
+    text-align: center;
+    color: #004E92;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    font-size: 400%;
+    text-shadow: 2px 2px 4px #004E92;
+}
+
+.texto {
+    text-align: center;
+    color: #FF7F50;
+    margin-top: 80px;
+    margin-bottom: 40px;
+    font-size: 150%;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
 
 
 
@@ -90,4 +127,28 @@ html {
 
 .border-sand {
     border-color: #F5DEB3;
+}
+
+.item-carrusel {
+  position: relative;
+}
+
+.contenido-carrusel {
+  transition: opacity 0.3s ease;
+}
+
+.item-carrusel:hover .contenido-carrusel {
+  opacity: 0.4;
+}
+
+.overlay-carrusel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+
+.item-carrusel:hover .overlay-carrusel {
+  display: block;
 }
