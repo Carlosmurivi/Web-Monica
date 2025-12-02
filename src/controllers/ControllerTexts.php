@@ -22,4 +22,15 @@ class ControllerTexts
 
         return $text_id;
     }
+
+    public static function getTextById($id)
+    {
+        global $pdo;
+
+        $stmt = $pdo->prepare("SELECT * FROM text WHERE id = :id");
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }

@@ -72,8 +72,35 @@ class ControllerTrips
         $_SESSION['draftTrip'] = [];
     }
 
-    public static function paintTrips()
+    public static function getTrips()
     {
-        
+        global $pdo;
+
+        $stmt = $pdo->prepare("SELECT * FROM trip");
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
+    public static function getTripById($id)
+    {
+        global $pdo;
+
+        $stmt = $pdo->prepare("SELECT * FROM trip WHERE id = :id");
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public static function getDetailsTripById($id)
+    {
+        global $pdo;
+
+        $stmt = $pdo->prepare("SELECT * FROM detail_trip WHERE trip_id = :id");
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

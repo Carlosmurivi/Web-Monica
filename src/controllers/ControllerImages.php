@@ -25,4 +25,15 @@ class ControllerImages
 
         return $image_id;
     }
+    
+    public static function getImageById($id)
+    {
+        global $pdo;
+
+        $stmt = $pdo->prepare("SELECT * FROM image WHERE id = :id");
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_OBJ);
+    }
 }

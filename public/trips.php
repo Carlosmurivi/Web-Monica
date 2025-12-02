@@ -1,5 +1,6 @@
 <?php
 include_once '../src/controllers/ControllerUsers.php';
+include_once '../src/controllers/ControllerTrips.php';
 
 if (!ControllerUsers::checkLoggedInUser()) {
     header("Location: login.php");
@@ -27,5 +28,16 @@ if (!ControllerUsers::checkLoggedInUser()) {
 
     <p class="texto">"Todos estos lugares tendrán por siempre un trocito nuestro"</p>
 
+    <div class="col-10 mx-auto p-4 bg-light-blue rounded-3 mb-5 d-flex flex-wrap">
+        <?php
+        $trips = ControllerTrips::getTrips();
+
+        foreach ($trips as $trip) {
+            include("../src/views/tripCard.php");
+        }
+        ?>
+    </div>
+
+    <p>Fin</p>
 </body>
 </html>

@@ -1,6 +1,3 @@
-<?php
-?>
-
 <nav class="d-flex flex-wrap bg-blue p-2">
     <div class="d-flex aling-items-center col-2">
         <a href="index.php">
