@@ -1,5 +1,5 @@
 <?php
-require_once '../env.php';
+require_once __DIR__ . '/../env.php';
 
 try {
     global $host, $port, $nombre_bd, $usuario_bd, $pass_bd, $endpoint;

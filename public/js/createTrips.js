@@ -51,6 +51,27 @@ $(document).ready(function () {
         reader.readAsDataURL(this.files[0]);
     });
 
+    $('#save-trip').click(function () {
+        if (img_name != '' && $('#date').val() != '' && $('#place').val() != '' && img_name != null && $('#date').val() != null && $('#place').val() != null) {
+            $('#save-trip').addClass('d-none');
+            $('#spinner').removeClass('d-none');
+            $croppie1.result({ type: 'base64', format: 'png' }).then(function (imgBase64) {
+                $.ajax({
+                    url: '../src/api/v1/save_trip.php',
+                    method: 'POST',
+                    data: { img: imgBase64, place: $('#place').val(), date: $('#date').val(), fname: img_name },
+                    dataType: 'json'
+                }).done(function (response) {
+                    window.location.href = 'trips.php';
+                }).fail(function (err) {
+                    console.error(err);
+                });
+            });
+        } else {
+            $('#error').text("Por favor, complete todos los campos");
+        }
+    });
+
 
 
 
@@ -93,7 +114,7 @@ $(document).ready(function () {
                     $('#name').val('');
                     $('#input-image').val('');
                     $('#date-image').val('');
-                    $('#size-image').val('');
+                    $('#size-image').val('col-12');
 
                     $croppie2.bind({ url: '' });
                     $('#croppie-editor-image').addClass('d-none');
@@ -133,47 +154,13 @@ $(document).ready(function () {
 
                     $('#title').val('');
                     $('#story').val('');
-                    $('#size-text').val('');
+                    $('#size-text').val('col-12');
                     $('#add-text').removeClass('d-none');
                     $('#spinner-text').addClass('d-none');
                     $('#error-add-text').text("");
                 });
         } else {
             $('#error-add-text').text("Por favor, complete al menos un campo");
-        }
-    });
-
-
-
-
-
-    // GUARDAR EL VIAJE
-
-    $('#save-trip').click(function () {
-        if (img_name != '' && $('#date').val() != '' && $('#place').val() != '' && img_name != null && $('#date').val() != null && $('#place').val() != null) {
-            $('#save-trip').addClass('d-none');
-            $('#spinner').removeClass('d-none');
-            $croppie1.result({ type: 'base64', format: 'png' }).then(function (imgBase64) {
-                $.ajax({
-                    url: '../src/api/v1/save_trip.php',
-                    method: 'POST',
-                    data: { img: imgBase64, place: $('#place').val(), date: $('#date').val(), fname: img_name },
-                    dataType: 'json'
-                }).done(function (response) {
-                    $('#place').val('');
-                    $('#date').val('');
-
-                    $croppie1.bind({ url: '' });
-                    $('#save-trip').removeClass('d-none');
-                    $('#spinner').addClass('d-none');
-                    $('#error').text("");
-                    console.log(response);
-                }).fail(function (err) {
-                    console.error(err);
-                });
-            });
-        } else {
-            $('#error').text("Por favor, complete todos los campos");
         }
     });
 })
@@ -209,7 +196,7 @@ function paintStory(id, story, size) {
                             <button class="btn btn-danger btn-sm eliminar-item" id-item="${id}">Eliminar</button>
                         </div>
                     `;
-                    
+
     return text;
 }
 
@@ -222,6 +209,6 @@ function paintTitle(id, title, size) {
                             <button class="btn btn-danger btn-sm eliminar-item" id-item="${id}">Eliminar</button>
                         </div>
                     `;
-                    
+
     return text;
 }
