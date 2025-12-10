@@ -4,14 +4,16 @@ session_start();
 
 
 $response["success"] = true;
-if (isset($_GET['title'])) {
+
+if (isset($_GET['title']) && isset($_GET['context'])) {
     $id = uniqid();
-    $_SESSION['draftTrip'][] = ['id' => $id, 'type' => 'text', 'title' => $_GET["title"] ?? '', 'story' => '', 'size' => $_GET["size"] ?? ''];
+    $_SESSION[$_GET['context']][] = ['id' => $id, 'type' => 'text', 'title' => $_GET["title"] ?? '', 'story' => '', 'size' => $_GET["size"] ?? ''];
     $response["data_title"] = ["id" => $id, "title" => $_GET["title"] ?? ''];
 }
-if (isset($_GET['story'])) {
+
+if (isset($_GET['story']) && isset($_GET['context'])) {
     $id = uniqid();
-    $_SESSION['draftTrip'][] = ['id' => $id, 'type' => 'text', 'title' => '', 'story' => $_GET["story"] ?? '', 'size' => $_GET["size"] ?? ''];
+    $_SESSION[$_GET['context']][] = ['id' => $id, 'type' => 'text', 'title' => '', 'story' => $_GET["story"] ?? '', 'size' => $_GET["size"] ?? ''];
     $response["data_story"] = ["id" => $id, "story" => $_GET["story"] ?? ''];
 }
 

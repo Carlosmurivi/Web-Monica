@@ -12,6 +12,15 @@
   font-style: normal;
 }
 
+:root {
+    --bg: #fafafa;
+    --text: #222;
+    --gap: 16px;
+    --columns: 3;
+}
+
+
+
 
 
 
@@ -102,7 +111,77 @@ html {
   display: block;
 }
 
+.blustrue {
+    font-family: "Blustrue";
+}
 
+.grian {
+    font-family: "Grian";
+}
+
+.button-add {
+    width: 40px;
+    height: 40px;
+    background-color: #fd5214;
+    border-radius: 20%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+
+
+
+
+
+/* Galerria */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.container {
+    width: min(1200px, 100%);
+    padding: 0 24px 24px;
+    margin: 0 auto;
+}
+
+.masonry {
+    column-count: 3;
+    column-gap: 16px;
+}
+
+.masonry-item {
+    break-inside: avoid;
+    margin: 0 0 16px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.masonry-item img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+@media (max-width: 900px) {
+    .masonry {
+        column-count: 2;
+        column-gap: 16px;
+    }
+}
+
+@media (max-width: 600px) {
+    .masonry {
+        column-count: 1;
+        column-gap: 16px;
+    }
+}
 
 
 
@@ -164,6 +243,8 @@ html {
 }
 
 .border-blue {
+    border: solid;
+    border-width: 2px;
     border-color: #004E92;
 }
 

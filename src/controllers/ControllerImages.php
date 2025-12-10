@@ -25,7 +25,7 @@ class ControllerImages
 
         return $image_id;
     }
-    
+
     public static function getImageById($id)
     {
         global $pdo;
@@ -35,5 +35,58 @@ class ControllerImages
         $stmt->execute();
 
         return $stmt->fetch(PDO::FETCH_OBJ);
+    }
+
+    public static function getAllImages()
+    {
+        global $pdo;
+
+        $stmt = $pdo->prepare("SELECT * FROM image ORDER BY date DESC");
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public static function getAllImagesByPlaceMaximumDateMinimumDate($place, $maximumDate, $minimumDate)
+    {
+        global $pdo;
+
+        if ($place != null && $maximumDate != null && $minimumDate != null) {
+            $place = "%" . $place . "%";
+            $stmt = $pdo->prepare("SELECT * FROM image WHERE place ILIKE :place AND date < :maximumDate AND date > :minimumDate ORDER BY date DESC");
+            $stmt->bindParam(':place', $place);
+            $stmt->bindParam(':maximumDate', $maximumDate);
+            $stmt->bindParam(':minimumDate', $minimumDate);
+        } elseif ($place != null && $maximumDate != null) {
+            $place = "%" . $place . "%";
+            $stmt = $pdo->prepare("SELECT * FROM image WHERE place ILIKE :place AND date < :maximumDate ORDER BY date DESC");
+            $stmt->bindParam(':place', $place);
+            $stmt->bindParam(':maximumDate', $maximumDate);
+        } elseif ($place != null && $minimumDate != null) {
+            $place = "%" . $place . "%";
+            $stmt = $pdo->prepare("SELECT * FROM image WHERE place ILIKE :place AND date > :minimumDate ORDER BY date DESC");
+            $stmt->bindParam(':place', $place);
+            $stmt->bindParam(':minimumDate', $minimumDate);
+        } elseif ($maximumDate != null && $minimumDate != null) {
+            $stmt = $pdo->prepare("SELECT * FROM image WHERE date < :maximumDate AND date > :minimumDate ORDER BY date DESC");
+            $stmt->bindParam(':maximumDate', $maximumDate);
+            $stmt->bindParam(':minimumDate', $minimumDate);
+        } elseif ($place != null) {
+            $place = "%" . $place . "%";
+            $stmt = $pdo->prepare("SELECT * FROM image WHERE place ILIKE :place ORDER BY date DESC");
+            $stmt->bindParam(':place', $place);
+        } elseif ($maximumDate != null) {
+            $stmt = $pdo->prepare("SELECT * FROM image WHERE date < :maximumDate ORDER BY date DESC");
+            $stmt->bindParam(':maximumDate', $maximumDate);
+        } elseif ($minimumDate != null) {
+            $stmt = $pdo->prepare("SELECT * FROM image WHERE date > :minimumDate ORDER BY date DESC");
+            $stmt->bindParam(':minimumDate', $minimumDate);
+        } else {
+            return self::getAllImages();
+        }
+
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 }

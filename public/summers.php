@@ -1,6 +1,6 @@
 <?php
 include_once '../src/controllers/ControllerUsers.php';
-include_once '../src/controllers/ControllerTrips.php';
+include_once '../src/controllers/ControllerSummers.php';
 
 if (!ControllerUsers::checkLoggedInUser()) {
     header("Location: login.php");
@@ -14,7 +14,7 @@ if (!ControllerUsers::checkLoggedInUser()) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viajes</title>
+    <title>Veranos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
@@ -26,13 +26,13 @@ if (!ControllerUsers::checkLoggedInUser()) {
 <body>
     <?php include("../src/views/menu.php"); ?>
 
-    <h1 class="titulo">NUESTROS VIAJES</h1>
+    <h1 class="titulo">NUESTROS VERANOS</h1>
 
-    <p class="texto">"Todos estos lugares tendrán por siempre un trocito nuestro"</p>
+    <p class="texto">"El verano es un estado mental"</p>
 
-    <div class="col-10 mx-auto p-4 bg-light-blue rounded-3 border-blue mb-5 d-flex flex-wrap">
+    <div class="col-10 mx-auto p-4 bg-light-blue rounded-3 mb-5 d-flex flex-wrap border-blue">
         <div class="col-12 text-end">
-            <a href="createTrips.php" class="button-add">
+            <a href="createSummers.php" class="button-add">
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                     class="bi bi-plus-lg text-light" viewBox="0 0 16 16">
                     <path fill-rule="evenodd"
@@ -41,10 +41,10 @@ if (!ControllerUsers::checkLoggedInUser()) {
             </a>
         </div>
         <?php
-        $trips = ControllerTrips::getTrips();
+        $summers = ControllerSummers::getSummers();
 
-        foreach ($trips as $trip) {
-            include("../src/views/tripCard.php");
+        foreach ($summers as $summer) {
+            include("../src/views/summerCard.php");
         }
         ?>
     </div>

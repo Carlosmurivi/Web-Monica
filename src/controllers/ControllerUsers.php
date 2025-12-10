@@ -15,7 +15,7 @@ class ControllerUsers
         global $pdo;
         $password_hash = md5($password);
 
-        $stmt = $pdo->prepare("SELECT id, name, creation_date FROM user WHERE name = :name AND password = :password");
+        $stmt = $pdo->prepare("SELECT id, name, creation_date FROM users WHERE name = :name AND password = :password");
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':password', $password_hash);
         $stmt->execute();

@@ -39,7 +39,7 @@ if (isset($_POST['name']) && isset($_POST['password'])) {
         <div class="d-flex justify-content-center">
             <form action="login.php" method="POST" id="form"
                 class="shadow bg-white rounded-4 col-12 col-xl-9 p-4 d-flex flex-wrap">
-                <h1 class="col-12 text-center mb-5 fs-1 blue">Inicio de Sesión</h1>
+                <h1 class="col-12 text-center mb-5 fs-1 blue grian">Inicio de Sesión</h1>
 
                 <div class="form-floating mb-3 col-12">
                     <input type="text" class="form-control border-blue blue" id="name" name="name" placeholder="name@example.com">
@@ -51,12 +51,9 @@ if (isset($_POST['name']) && isset($_POST['password'])) {
                     <label for="password">Contraseña</label>
                 </div>
 
-                <button type="submit" class="button-login bg-coral col-12 mb-3 mt-4 fs-4">Enviar</button>
+                <button type="submit" class="button-login bg-coral col-12 mb-3 mt-4 fs-3 grian">Enviar</button>
 
                 <p class="text-danger"><?php echo isset($error) ? $error : ''; ?></p>
-                <p class="col-12 text-center blue">¿No tienes una cuenta? <a href="registro.php"
-                        class="blue">Regístrate
-                        aquí</a></p>
             </form>
         </div>
     </div>

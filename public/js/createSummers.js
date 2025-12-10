@@ -1,4 +1,4 @@
-const tripContainer = document.getElementById('tripContainer');
+const summerContainer = document.getElementById('summerContainer');
 let id_carrusel = crypto.randomUUID();
 
 
@@ -51,18 +51,18 @@ $(document).ready(function () {
         reader.readAsDataURL(this.files[0]);
     });
 
-    $('#save-trip').click(function () {
-        if (img_name != '' && $('#date').val() != '' && $('#place').val() != '' && img_name != null && $('#date').val() != null && $('#place').val() != null) {
-            $('#save-trip').addClass('d-none');
+    $('#save-summer').click(function () {
+        if (img_name != '' && $('#date').val() != '' && img_name != null && $('#date').val() != null) {
+            $('#save-summer').addClass('d-none');
             $('#spinner').removeClass('d-none');
             $croppie1.result({ type: 'base64', format: 'png' }).then(function (imgBase64) {
                 $.ajax({
-                    url: '../src/api/v1/save_trip.php',
+                    url: '../src/api/v1/save_summer.php',
                     method: 'POST',
-                    data: { img: imgBase64, place: $('#place').val(), date: $('#date').val(), fname: img_name },
+                    data: { img: imgBase64, date: $('#date').val(), fname: img_name },
                     dataType: 'json'
                 }).done(function (response) {
-                    window.location.href = 'trips.php';
+                    window.location.href = 'summers.php';
                 }).fail(function (err) {
                     console.error(err);
                 });
@@ -107,10 +107,10 @@ $(document).ready(function () {
                 $.ajax({
                     url: '../src/api/v1/crop_image.php',
                     method: 'POST',
-                    data: { context: 'draftTrip', img: imgBase64, name: $('#name').val(), date: $('#date-image').val(), fname: img_name_image, size: $('#size-image').val() },
+                    data: { context: 'draftSummer', img: imgBase64, name: $('#name').val(), date: $('#date-image').val(), fname: img_name_image, size: $('#size-image').val() },
                     dataType: 'json'
                 }).done(function (response) {
-                    tripContainer.appendChild(paintImage(response['id'], $('#date-image').val(), response['url'], $('#size-image').val()));
+                    summerContainer.appendChild(paintImage(response['id'], $('#date-image').val(), response['url'], $('#size-image').val()));
                     $('#name').val('');
                     $('#input-image').val('');
                     $('#date-image').val('');
@@ -141,15 +141,15 @@ $(document).ready(function () {
             $('#add-text').addClass('d-none');
             $('#spinner-text').removeClass('d-none');
 
-            fetch("../src/api/v1/save_text.php?context=draftTrip&title=" + encodeURIComponent($('#title').val()) + "&story=" + encodeURIComponent($('#story').val()) + "&size=" + encodeURIComponent($('#size-text').val()))
+            fetch("../src/api/v1/save_text.php?context=draftSummer&title=" + encodeURIComponent($('#title').val()) + "&story=" + encodeURIComponent($('#story').val()) + "&size=" + encodeURIComponent($('#size-text').val()))
                 .then((response) => response.json())
                 .then((data) => {
                     if (data["data_title"]["title"] != "") {
-                        tripContainer.appendChild(paintTitle(data["data_title"]["id"], data["data_title"]["title"], $('#size-text').val()));
+                        summerContainer.appendChild(paintTitle(data["data_title"]["id"], data["data_title"]["title"], $('#size-text').val()));
                     }
 
                     if (data["data_story"]["story"] != "") {
-                        tripContainer.appendChild(paintStory(data["data_story"]["id"], data["data_story"]["story"], $('#size-text').val()));
+                        summerContainer.appendChild(paintStory(data["data_story"]["id"], data["data_story"]["story"], $('#size-text').val()));
                     }
 
                     $('#title').val('');

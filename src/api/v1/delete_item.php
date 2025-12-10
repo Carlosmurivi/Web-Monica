@@ -13,6 +13,15 @@ foreach ($_SESSION['draftTrip'] as $key => $item) {
     }
 }
 
+foreach ($_SESSION['draftSummer'] as $key => $item) {
+    if ($item['id'] === $id) {
+        unset($_SESSION['draftSummer'][$key]);
+        $response = ["success" => true];
+        echo json_encode($response);
+        exit; // detener aquí para no imprimir más
+    }
+}
+
 // Si no se encontró nada
 $response = [
     "success" => false,

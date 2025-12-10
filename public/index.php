@@ -23,5 +23,8 @@ if (!ControllerUsers::checkLoggedInUser()) {
 <body>
     <?php include("../src/views/menu.php"); ?>
     <a href="logOut.php">Logout</a>
+    <h1 class="titulo">Bienvenido a la página principal</h1>
+    
+    <?php include("../src/views/footer.php"); ?>
 </body>
 </html>
