@@ -14,7 +14,7 @@ class ControllerTrips
 
     public static function saveTrip($place, $date, $url)
     {
-        $cover_id = ControllerImages::saveImage($place, $date, $url, "trip");
+        $cover_id = ControllerImages::saveImage("", $date, $url, "trip");
 
         global $pdo;
 

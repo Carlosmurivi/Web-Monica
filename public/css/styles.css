@@ -1,15 +1,15 @@
 @font-face {
-  font-family: 'Blustrue';
-  src: url('../fonts/Blustrue.otf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'Blustrue';
+    src: url('../fonts/Blustrue.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: 'Grian';
-  src: url('../fonts/Grian.otf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'Grian';
+    src: url('../fonts/Grian.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 :root {
@@ -88,27 +88,27 @@ html {
 }
 
 .item-carrusel {
-  position: relative;
+    position: relative;
 }
 
 .contenido-carrusel {
-  transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease;
 }
 
 .item-carrusel:hover .contenido-carrusel {
-  opacity: 0.4;
+    opacity: 0.4;
 }
 
 .overlay-carrusel {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
 }
 
 .item-carrusel:hover .overlay-carrusel {
-  display: block;
+    display: block;
 }
 
 .blustrue {
@@ -155,18 +155,37 @@ html {
 }
 
 .masonry-item {
-    break-inside: avoid;
     margin: 0 0 16px;
     border-radius: 12px;
     overflow: hidden;
+    position: relative;
+    display: inline-block;
     background: white;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    width: 100%;
 }
 
 .masonry-item img {
     display: block;
     width: 100%;
     height: auto;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #004E92;
+    color: #fff;
+    padding: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-align: center;
+}
+
+.masonry-item:hover .overlay {
+    opacity: 0.9;
 }
 
 @media (max-width: 900px) {
@@ -181,6 +200,31 @@ html {
         column-count: 1;
         column-gap: 16px;
     }
+}
+
+
+
+
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+}
+
+.carousel-control-prev {
+    left: -60px;
+}
+
+.carousel-control-next {
+    right: -60px;
+}
+
+.carousel-control-prev-icon {
+  filter: invert(100%) sepia(100%) saturate(1000%) hue-rotate(0deg);
+}
+
+.carousel-control-next-icon {
+  filter: invert(100%) sepia(100%) saturate(1000%) hue-rotate(0deg);
 }
 
 
@@ -259,4 +303,3 @@ html {
 .border-sand {
     border-color: #F5DEB3;
 }
-

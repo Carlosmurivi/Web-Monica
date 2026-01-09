@@ -36,7 +36,7 @@ $_SESSION['draftSummer'] = $_SESSION['draftSummer'] ?? [];
     <div id="summerContainer" class="col-8 mx-auto d-flex flex-wrap mb-5">
         <div class="d-flex flex-wrap col-12 px-5">
             <div class="col-6 pe-2">
-                <input class="form-control h-100" type="date" name="date" id="date" required>
+                <input class="form-control h-100" type="number" min="2020" max="2100" name="date" id="date" placeholder="Año" required>
             </div>
             <div class="col-6 ps-2">
                 <input class="form-control h-100" type="file" name="front-page" accept="image/jpeg, image/png"

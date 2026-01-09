@@ -55,15 +55,15 @@ if (!ControllerUsers::checkLoggedInUser()) {
         <div class="collapse" id="collapseFilters" data-bs-parent="#formularios">
             <div class="d-flex flex-wrap col-6 mx-auto mb-5">
                 <div class="col-6 pe-1 d-flex flex-wrap">
-                    <label for="maximum-date" class="form-label col-4 my-auto">Fecha máxima</label>
-                    <div class="col-8">
-                        <input class="form-control w-100" type="date" name="maximum-date" id="maximum-date">
-                    </div>
-                </div>
-                <div class="col-6 ps-1 d-flex flex-wrap">
                     <label for="minimum-date" class="form-label col-4 my-auto">Fecha mínima</label>
                     <div class="col-8">
                         <input class="form-control w-100" type="date" name="minimum-date" id="minimum-date">
+                    </div>
+                </div>
+                <div class="col-6 ps-1 d-flex flex-wrap">
+                    <label for="maximum-date" class="form-label col-4 my-auto">Fecha máxima</label>
+                    <div class="col-8">
+                        <input class="form-control w-100" type="date" name="maximum-date" id="maximum-date">
                     </div>
                 </div>
             </div>

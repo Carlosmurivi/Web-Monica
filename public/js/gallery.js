@@ -115,7 +115,7 @@ $(document).ready(function () {
 
 
 function paintImages(place, maximumDate, minimumDate) {
-    fetch("../src/api/v1/get_images.php?place=" + place + "&maximum-date=" + maximumDate + "&minimum-date=" + minimumDate)
+    fetch("../src/api/v1/images.php?place=" + place + "&maximum-date=" + maximumDate + "&minimum-date=" + minimumDate)
         .then(response => response.json())
         .then(data => {
             document.getElementById('masonry').innerHTML = '';
@@ -127,7 +127,12 @@ function paintImages(place, maximumDate, minimumDate) {
                 const img = document.createElement('img');
                 img.src = image.url;
 
+                const overlay = document.createElement('div');
+                overlay.className = 'overlay';
+                overlay.innerHTML = `<strong>${image.place}</strong><br>${image.date}`;
+
                 figure.appendChild(img);
+                figure.appendChild(overlay);
                 document.getElementById('masonry').appendChild(figure);
             });
         });

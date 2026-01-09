@@ -5,7 +5,6 @@ let id_carrusel = crypto.randomUUID();
 
 var $croppie1 = new Croppie($('#croppie-field')[0], {
     enableExif: true,
-    enableResize: true,
     enableZoom: true,
     boundary: { width: 400, height: 400 },
     viewport: {

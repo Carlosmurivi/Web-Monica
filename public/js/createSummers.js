@@ -5,7 +5,6 @@ let id_carrusel = crypto.randomUUID();
 
 var $croppie1 = new Croppie($('#croppie-field')[0], {
     enableExif: true,
-    enableResize: true,
     enableZoom: true,
     boundary: { width: 400, height: 400 },
     viewport: {
@@ -28,6 +27,7 @@ var $croppie2 = new Croppie($('#croppie-field-image')[0], {
 });
 
 $(document).on('click', '.eliminar-item', function (e) {
+    console.log(e.target.getAttribute("id-item"));
     fetch("../src/api/v1/delete_item.php?id=" + e.target.getAttribute("id-item"))
         .then((response) => response.json())
         .then((data) => {
